@@ -25,6 +25,9 @@ public class Map {
     }
 
     public Cell getCellAt(int x, int y) {
+        if (x < 0 || x >= cells.length || y < 0 || y >= cells[0].length) {
+            return new Cell(CellType.WALL);
+        }
         return cells[x][y];
     }
 

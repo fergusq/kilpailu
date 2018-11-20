@@ -3,6 +3,9 @@ package game.action;
 import game.character.Character;
 import game.map.Map;
 
+/**
+ * Split action clones the character and gives half of the hit points to the clone.
+ */
 public class SplitAction implements Action {
     private final int dx;
     private final int dy;
@@ -26,7 +29,14 @@ public class SplitAction implements Action {
         int newHp = character.getHp() / 2;
         character.setHp(newHp);
 
-        Character clone = new Character(character.getPlayer(), character.getX() + dx, character.getY() + dy, newHp);
+        Character clone = new Character(
+            character.getPlayer(),
+            character.getX() + dx,
+            character.getY() + dy,
+            newHp,
+            character.maxStrength,
+            character.getStrength()
+        );
         map.getCellOf(clone).setCharacter(clone);
     }
 }

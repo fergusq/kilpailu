@@ -11,13 +11,18 @@ public class Character implements CharacterInfo {
     private int x;
     private int y;
     private int hp;
+    private int strength;
 
-    public Character(Player player, int x, int y, int hp) {
+    public final int maxStrength;
+
+    public Character(Player player, int x, int y, int hp, int maxStrength, int strength) {
         this.player = player;
         this.ai = player.getNewAI();
         this.x = x;
         this.y = y;
         this.hp = hp;
+        this.maxStrength = maxStrength;
+        this.strength = strength;
     }
 
     @Override
@@ -75,11 +80,47 @@ public class Character implements CharacterInfo {
     }
 
     /**
-     * Removes the given amount from the hit points of the character.
+     * Adds or removes the given amount of hit points.
      * 
-     * @param amount the amount points to be removed
+     * @param amount the amount hit points to be added, either positive or negative
      */
-    public void reduceHp(int amount) {
-        this.hp -= amount;
+    public void changeHpBy(int amount) {
+        this.hp += amount;
+    }
+
+    /**
+     * @return The strength of the character.
+     */
+    public int getStrength() {
+        return strength;
+    }
+
+    /**
+     * Sets the strength of the character.
+     * 
+     * @param strength the new strength
+     */
+    public void setStrength(int strength) {
+        if (strength > maxStrength) {
+            strength = maxStrength;
+        } else if (strength < 0) {
+            strength = 0;
+        }
+        this.strength = strength;
+    }
+
+    /**
+     * Changes the strength of the character by a given number.
+     * 
+     * @param amount the amount of strength to be added
+     */
+    public void changeStrengthBy(int amount) {
+        if (strength + amount > maxStrength) {
+            strength = maxStrength;
+        } else if (strength + amount < 0) {
+            strength = 0;
+        } else {
+            strength += amount;
+        }
     }
 }

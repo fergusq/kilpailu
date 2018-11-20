@@ -3,6 +3,9 @@ package game.action;
 import game.map.Map;
 import game.character.Character;
 
+/**
+ * Moving costs 1 HP.
+ */
 public class MoveAction implements Action {
 
     private final int dx;
@@ -30,6 +33,6 @@ public class MoveAction implements Action {
         map.getCellOf(character).setCharacter(character);
 
         // moving costs 1 HP
-        character.reduceHp(1);
+        character.changeHpBy(-1);
     }
 }
