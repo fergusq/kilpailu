@@ -14,4 +14,8 @@ public interface CellInfo {
     public default Optional<? extends CharacterInfo> getCharacterInfo() {
         return getCharacter();
     }
+
+    public default boolean isEmpty() {
+        return getType() != CellType.WALL && !getCharacter().isPresent();
+    }
 }

@@ -5,7 +5,7 @@ import game.Player;
 /**
  * Represents a character in the game.
  */
-public class Character implements CharacterInfo {
+public class Character implements OwnCharacterInfo {
     private Player player;
     private CharacterAI ai;
     private int x;
@@ -88,9 +88,7 @@ public class Character implements CharacterInfo {
         this.hp += amount;
     }
 
-    /**
-     * @return The strength of the character.
-     */
+    @Override
     public int getStrength() {
         return strength;
     }

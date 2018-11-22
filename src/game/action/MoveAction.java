@@ -32,7 +32,8 @@ public class MoveAction implements Action {
         character.setY(character.getY() + dy);
         map.getCellOf(character).setCharacter(character);
 
-        // moving costs 1 HP
+        // moving costs 1 HP and 1 strength
         character.changeHpBy(-1);
+        character.changeStrengthBy(-1);
     }
 }

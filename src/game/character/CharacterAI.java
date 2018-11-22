@@ -8,10 +8,10 @@ import game.map.Area;
  */
 public abstract class CharacterAI {
 
-    protected final CharacterInfo characterInfo;
+    protected final OwnCharacterInfo ownCharacter;
 
-    public CharacterAI(CharacterInfo characterInfo) {
-        this.characterInfo = characterInfo;
+    public CharacterAI(OwnCharacterInfo ownCharacter) {
+        this.ownCharacter = ownCharacter;
     }
 
     /**
